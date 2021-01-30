@@ -3,28 +3,27 @@ from time_calculator import add_time
 
 
 class UnitTests(unittest.TestCase):
-
-    def test_same_period(self):
+    def test_same_period(self): #Ok
         actual = add_time("3:30 PM", "2:12")
         expected = "5:42 PM"
-        self.assertEqual(actual, expected, 'Expected calling "add_time()" with "3:30 PM", "2:12" to return "5:42 PM"')
+        self.assertEqual(actual, expected, 'Expected calling "add_time()" with "3:30 PM", "2:12" to return "5:42 PM"')    
 
-    def test_different_period(self):
+    def test_different_period(self): #Ok
         actual = add_time("11:55 AM", "3:12")
         expected = "3:07 PM"
-        self.assertEqual(actual, expected, 'Expected calling "add_time()" with "11:55 AM", "3:12" to return "3:07 PM"')
+        self.assertEqual(actual, expected, 'Expected calling "add_time()" with "11:55 AM", "3:12" to return "3:07 PM"')  
 
-    def test_next_day(self):
+    def test_next_day(self): # ok
         actual = add_time("9:15 PM", "5:30")
         expected = "2:45 AM (next day)"
-        self.assertEqual(actual, expected, 'Expected time to end with "(next day)" when it is the next day.')
+        self.assertEqual(actual, expected, 'Expected time to end with "(next day)" when it is the next day.') 
 
-    def test_period_change_at_twelve(self):
+    def test_period_change_at_twelve(self): # ok
         actual = add_time("11:40 AM", "0:25")
         expected = "12:05 PM"
-        self.assertEqual(actual, expected, 'Expected period to change from AM to PM at 12:00')
+        self.assertEqual(actual, expected, 'Expected period to change from AM to PM at 12:00') 
 
-    def test_twenty_four(self):
+    def test_twenty_four(self):# ok
         actual = add_time("2:59 AM", "24:00")
         expected = "2:59 AM (next day)"
         self.assertEqual(actual, expected, 'Expected calling "add_time()" with "2:59 AM", "24:00" to return "2:59 AM"')
@@ -52,7 +51,7 @@ class UnitTests(unittest.TestCase):
     def test_twenty_four_with_day(self):
         actual = add_time("2:59 AM", "24:00", "saturDay")
         expected = "2:59 AM, Sunday (next day)"
-        self.assertEqual(actual, expected, 'Expected calling "add_time()" with "2:59 AM", "24:00", "saturDay" to return "2:59 AM, Sunday (next day)"')
+        self.assertEqual(actual, expected, 'Expected calling "add_time()" with "2:59 AM", "24:00", "saturDay" to return "2:59 AM, Sunday (next day)"')     
 
     def test_two_days_later_with_day(self):
         actual = add_time("11:59 PM", "24:05", "Wednesday")
